@@ -1,0 +1,10 @@
+select s.student_name,c.course_name from students s left join enrollments e on s.student_id = e.enrollment_id left join courses c on c.course_id = e.course_id;
+select c.course_name from courses c left join enrollments e on c.course_id = e.course_id where e.course_id IS NULL;
+select i.instructor_id,i.instructor_name,c.course_name from instructors i left join courses c on i.instructor_id = c.instructor_id;
+select course_name from courses where instructor_id IS NULL;
+SELECT s.student_id, s.student_name, e.enrollment_id, e.course_id FROM enrollments e right join students s on e.student_id = s.student_id;
+SELECT s.student_id, s.student_name FROM students s LEFT JOIN enrollments e ON s.student_id = e.student_id WHERE e.student_id IS NULL;
+SELECT s.student_id, s.student_name, e.enrollment_id, e.course_id FROM students s LEFT JOIN enrollments e ON s.student_id = e.student_id UNION SELECT s.student_id, s.student_name, e.enrollment_id, e.course_id FROM students s RIGHT JOIN enrollments e ON s.student_id = e.student_id;
+SELECT c.course_id, c.course_name FROM courses c LEFT JOIN enrollments e ON c.course_id = e.course_id WHERE e.course_id IS NULL;
+SELECT i.instructor_name, c.course_name FROM instructors i LEFT JOIN courses c ON i.instructor_id = c.instructor_id UNION SELECT i.instructor_name, c.course_name FROM instructors i RIGHT JOIN courses c ON i.instructor_id = c.instructor_id;
+SELECT s.student_name, c.course_name, i.instructor_name FROM students s LEFT JOIN enrollments e ON s.student_id = e.student_id LEFT JOIN courses c ON e.course_id = c.course_id LEFT JOIN instructors i ON c.instructor_id = i.instructor_id;
